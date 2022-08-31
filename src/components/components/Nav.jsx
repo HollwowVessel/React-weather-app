@@ -8,6 +8,7 @@ export const Nav = () => {
 			<ul className="nav-menu">
 				{mock.map((name, id) => (
 					<li
+						key={name}
 						className={active === id ? 'nav-menu__btn active' : 'nav-menu__btn'}
 						onClick={() => setActive(id)}>
 						На {name}

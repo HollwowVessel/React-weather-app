@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { week } from '../assets/mocks';
 import { WeatherCard } from './components/Card';
 import { Nav } from './components/Nav';
 
@@ -7,13 +9,9 @@ export const Forecast = () => {
 		<section className="forecast">
 			<Nav />
 			<div className="forecast-cards">
-				<WeatherCard />
-				<WeatherCard />
-				<WeatherCard />
-				<WeatherCard />
-				<WeatherCard />
-				<WeatherCard />
-				<WeatherCard />
+				{week.map((obj) => (
+					<WeatherCard {...obj} />
+				))}
 			</div>
 		</section>
 	);

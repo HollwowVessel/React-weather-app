@@ -1,14 +1,14 @@
 import React from 'react';
 
-export const WeatherCard = () => {
+export const WeatherCard = ({ title, date, icon, dayTemp, nightTemp, type }) => {
 	return (
 		<div className="card">
-			<h3 className="card__title">Сегодня</h3>
-			<p className="card__day">28 авг</p>
-			<img src="/images/svg/small_rain_sun.svg" alt="small_rain_sun" />
-			<p className="card__daytemp">+18°</p>
-			<p className="card__nigthtemp">+15°</p>
-			<p className="card__type">Облачно</p>
+			<h3 className="card__title">{title}</h3>
+			<p className="card__day">{date}</p>
+			<img src={`/images/svg/${icon}.svg`} alt={icon} />
+			<p className="card__daytemp">+{dayTemp}°</p>
+			<p className="card__nigthtemp">+{nightTemp}°</p>
+			<p className="card__type">{type}</p>
 		</div>
 	);
 };
