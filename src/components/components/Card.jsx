@@ -22,7 +22,7 @@ export const WeatherCard = ({ datetime, icon, tempmax, tempmin, conditions }) =>
 	return (
 		<div className="card">
 			<h3 className="card__title">{name}</h3>
-			{/* {<p className="card__day">{date}</p>} */}
+			{<p className="card__day">{datetime}</p>}
 			<img src={`/images/svg/${icon}.svg`} alt={icon} />
 			<p className="card__daytemp">{((tempmax - 32) * (5 / 9)).toFixed(1)}°</p>
 			<p className="card__nigthtemp">{((tempmin - 32) * (5 / 9)).toFixed(1)}°</p>
