@@ -9,6 +9,8 @@ export const Info = () => {
 	const dispatch = useDispatch();
 
 	const weather = useSelector((state) => state.weather.dailyWeather);
+	const decadeWeather = useSelector((state) => state.weather.decadeWeather);
+	let temp = decadeWeather.length ? decadeWeather[0] : '';
 	const [time, setTime] = useState(0);
 	function changeTime() {
 		let date = new Date();
@@ -19,11 +21,10 @@ export const Info = () => {
 		setTime(`${hours}:${minutes}`);
 	}
 	setInterval(changeTime, interval);
-	const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated({});
+	const { coords } = useGeolocated({});
 
 	useEffect(() => {
 		changeTime();
-		console.log(coords);
 		const [lat, lon] = [coords?.latitude, coords?.longitude];
 		dispatch(getDailyWeather({ city: '', lat, lon }));
 	}, [coords]);
@@ -36,7 +37,7 @@ export const Info = () => {
 				<p className="info-desc__town">Город: {weather.town}</p>
 			</div>
 			<div>
-				<img src="/images/sun.png" alt="" />
+				<img src={`/images/svg/${temp.icon}.svg`} alt={temp.icon} />
 			</div>
 		</section>
 	);

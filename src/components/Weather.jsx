@@ -33,7 +33,6 @@ export const Weather = () => {
 	} else {
 		windDirection = cardDirections[0];
 	}
-
 	return (
 		<section className="weather">
 			<div className="weather-temp">
