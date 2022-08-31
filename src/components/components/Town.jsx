@@ -9,7 +9,8 @@ export const Town = () => {
 		if (e.key != 'Enter') {
 			return;
 		}
-		dispatch(getDailyWeather(text));
+		console.log('Start');
+		dispatch(getDailyWeather({ city: text, lat: '', lon: '' }));
 	}
 	return (
 		<input

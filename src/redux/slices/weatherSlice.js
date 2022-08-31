@@ -13,7 +13,8 @@ async function getCoords(city) {
 
 export const getDailyWeather = createAsyncThunk('dailyWeather', async (info) => {
 	const city = info.city;
-	if (!info.city) {
+	console.log(info);
+	if (!info.city.length) {
 		if (!info.lat || !info.lon) {
 			return;
 		}
@@ -31,11 +32,12 @@ export const getDailyWeather = createAsyncThunk('dailyWeather', async (info) => 
 		return [...dailyWeather, city];
 	}
 	const [lat, lon] = await getCoords(city);
+
 	const dailyWeather = await fetch(
 		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}?key=${apiKey}`,
 	)
 		.then((res) => res.json())
-		.then((data) => data);
+		.then((data) => data.days);
 
 	return [...dailyWeather, city];
 });
@@ -52,6 +54,7 @@ const weatherSlice = createSlice({
 	extraReducers: {
 		[getDailyWeather.fulfilled]: (state, action) => {
 			let hours = new Date().getHours();
+			console.log(action.payload);
 			let info = action.payload[0].hours[hours - 1];
 			state.dailyWeather = {
 				temp: (info.temp - 32) * (5 / 9),
@@ -62,7 +65,7 @@ const weatherSlice = createSlice({
 				windDir: info.winddir,
 				feelsLike: (info.feelslike - 32) * (5 / 9),
 			};
-			state.decadeWeather.push(...action.payload);
+			state.decadeWeather = [...action.payload];
 		},
 	},
 });

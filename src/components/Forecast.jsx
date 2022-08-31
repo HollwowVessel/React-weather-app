@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { week } from '../assets/mocks';
 import { WeatherCard } from './components/Card';
 import { Nav } from './components/Nav';
 
 export const Forecast = () => {
 	const weekWeather = useSelector((state) => state.weather.decadeWeather);
-	const cards = weekWeather.length ? weekWeather.slice(0, 7) : [];
+	const [cards, setCards] = useState(weekWeather.length ? weekWeather.slice(0, 7) : []);
+	useMemo(() => setCards(weekWeather.length ? weekWeather.slice(0, 7) : []), [weekWeather]);
 	return (
 		<section className="forecast">
 			<Nav />
