@@ -21,6 +21,7 @@ export const Town = () => {
 	}
 
 	function handleKeyUp(e) {
+		setActive(true);
 		if (e.key != 'Enter') {
 			return;
 		}
@@ -28,15 +29,19 @@ export const Town = () => {
 	}
 
 	function handleClick(name) {
-		console.log(name);
 		setText(name);
 		setActive(false);
 		getWeather(name);
 	}
 
+	function handleChange(name) {
+		setText(name);
+		setActive(false);
+	}
+
 	useEffect(() => {
 		async function fetchData() {
-			if (text) {
+			if (text && text.length) {
 				const data = await fetch(
 					`https://api.locationiq.com/v1/autocomplete?key=pk.164249adb7bf93332d519071082cbfce&q=${text}`,
 				)
@@ -68,9 +73,8 @@ export const Town = () => {
 				<input
 					placeholder="Введите город"
 					value={text}
-					onChange={(e) => setText(e.target.value)}
+					onChange={(e) => handleChange(e.target.value)}
 					onKeyUp={(e) => handleKeyUp(e)}
-					onClick={() => setActive((prev) => !prev)}
 				/>
 				{active && (
 					<div className="suggestion">
