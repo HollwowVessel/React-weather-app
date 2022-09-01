@@ -4,14 +4,18 @@ import { getDailyWeather } from '../../redux/slices/weatherSlice';
 
 export const Town = () => {
 	const dispatch = useDispatch();
+
 	const [text, setText] = useState('');
+
 	function handleKeyUp(e) {
 		if (e.key != 'Enter') {
 			return;
 		}
-		console.log('Start');
-		dispatch(getDailyWeather({ city: text, lat: '', lon: '' }));
+		const city = text.slice(0, 1).toUpperCase() + text.slice(1, text.length).toLowerCase();
+		dispatch(getDailyWeather({ city, lat: '', lon: '' }));
+		setText('');
 	}
+
 	return (
 		<input
 			placeholder="Введите город"

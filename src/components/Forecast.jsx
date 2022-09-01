@@ -6,8 +6,10 @@ import { Nav } from './components/Nav';
 
 export const Forecast = () => {
 	const weekWeather = useSelector((state) => state.weather.decadeWeather);
-	const [cards, setCards] = useState(weekWeather.length ? weekWeather.slice(0, 7) : []);
+
 	const [active, setActive] = useState(0);
+	const [cards, setCards] = useState(weekWeather.length ? weekWeather.slice(0, 7) : []);
+
 	function handleClick(id) {
 		setActive(id);
 		if (id === 0) {
@@ -18,7 +20,10 @@ export const Forecast = () => {
 		}
 	}
 
-	useMemo(() => setCards(weekWeather.length ? weekWeather.slice(0, 7) : []), [weekWeather]);
+	useMemo(() => {
+		handleClick(active);
+	}, [weekWeather]);
+
 	return (
 		<section className="forecast">
 			<Nav click={handleClick} active={active} />

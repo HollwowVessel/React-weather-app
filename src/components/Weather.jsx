@@ -1,19 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux/es/exports';
 
+const cardDirections = [
+	'Север',
+	'Северо-восток',
+	'Восток',
+	'Юго-восток',
+	'Юг',
+	'Юго-запад',
+	'Запад',
+	'Северо-запад',
+];
+
 export const Weather = () => {
 	const weather = useSelector((state) => state.weather.dailyWeather);
-	const cardDirections = [
-		'Север',
-		'Северо-восток',
-		'Восток',
-		'Юго-восток',
-		'Юг',
-		'Юго-запад',
-		'Запад',
-		'Северо-запад',
-	];
+
 	let windDirection = weather.windDir;
+
 	if (windDirection === 0) {
 		windDirection = cardDirections[0];
 	} else if (windDirection < 90) {
@@ -33,6 +36,7 @@ export const Weather = () => {
 	} else {
 		windDirection = cardDirections[0];
 	}
+
 	return (
 		<section className="weather">
 			<div className="weather-temp">
