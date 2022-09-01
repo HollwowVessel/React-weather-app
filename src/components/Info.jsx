@@ -35,7 +35,9 @@ export const Info = () => {
 	return (
 		<section className="info">
 			<div className="info-desc">
-				<h1 className="info-desc__temp">{weather.temp ? weather.temp.toFixed(1) + '°' : 'Nope'}</h1>
+				<h1 className="info-desc__temp">
+					{weather.temp ? Math.floor(weather.temp) + '°' : 'Nope'}
+				</h1>
 				<p className="info-desc__today">Сегодня</p>
 				<p className="info-desc__time">Время: {time}</p>
 				<p className="info-desc__town">Город: {weather.town}</p>
