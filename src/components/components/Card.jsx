@@ -2,14 +2,17 @@ import React from 'react';
 
 export const WeatherCard = ({ datetime, icon, tempmax, tempmin, conditions }) => {
 	const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+
 	const date = new Date(datetime);
 	let today = new Date().setFullYear(
 		new Date().getFullYear(),
 		new Date().getMonth(),
 		new Date().getDate(),
 	);
+
 	today = new Date(today);
 	let name = '';
+
 	if (
 		today.getMonth() === date.getMonth() &&
 		date.getDate() === today.getDate() &&
@@ -19,6 +22,7 @@ export const WeatherCard = ({ datetime, icon, tempmax, tempmin, conditions }) =>
 	} else {
 		name = week[date.getDay()];
 	}
+
 	return (
 		<div className="card">
 			<h3 className="card__title">{name}</h3>

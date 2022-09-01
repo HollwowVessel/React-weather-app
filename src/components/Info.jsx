@@ -10,8 +10,11 @@ export const Info = () => {
 
 	const weather = useSelector((state) => state.weather.dailyWeather);
 	const decadeWeather = useSelector((state) => state.weather.decadeWeather);
-	let temp = decadeWeather.length ? decadeWeather[0] : '';
+
+	const { coords } = useGeolocated({});
 	const [time, setTime] = useState(0);
+	let temp = decadeWeather.length ? decadeWeather[0] : '';
+
 	function changeTime() {
 		let date = new Date();
 		let [hours, minutes] = [date.getHours(), date.getMinutes()];
@@ -20,14 +23,15 @@ export const Info = () => {
 		if (minutes < 10) minutes = '0' + minutes;
 		setTime(`${hours}:${minutes}`);
 	}
+
 	setInterval(changeTime, interval);
-	const { coords } = useGeolocated({});
 
 	useEffect(() => {
 		changeTime();
 		const [lat, lon] = [coords?.latitude, coords?.longitude];
 		dispatch(getDailyWeather({ city: '', lat, lon }));
 	}, [coords]);
+
 	return (
 		<section className="info">
 			<div className="info-desc">
