@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const apiKey = 'A4ULLKBTWLMSHXMP4F9SBAD4A';
+const googleApiKey = 'AIzaSyBSJnDcezlNZKJGFvkvzpGnsIXP-L1P-Nk';
 
 async function getCoords(city) {
 	const getCoords = await fetch(
@@ -13,7 +14,6 @@ async function getCoords(city) {
 
 export const getDailyWeather = createAsyncThunk('dailyWeather', async (info) => {
 	const city = info.city;
-	console.log(info);
 	if (!info.city.length) {
 		if (!info.lat || !info.lon) {
 			return;

@@ -43,19 +43,19 @@ export const Weather = () => {
 				<img src="/images/svg/temp.svg" alt="temp" />
 				<span className="weather-type">Температура</span>
 				<span className="weather-desc">
-					{weather.temp ? weather.temp.toFixed(1) + '°' : 'Nope'}- ощущается как{' '}
-					{weather.feelsLike ? weather.feelsLike.toFixed(1) + '°' : ''}
+					+{weather.temp ? Math.floor(weather.temp) + '°' : 'Nope'}- ощущается как +
+					{weather.feelsLike ? Math.floor(weather.feelsLike) + '°' : ''}
 				</span>
 			</div>
 			<div className="weather-pres">
 				<img src="/images/svg/pres.svg" alt="pres" />
 				<span className="weather-type">Давление </span>
-				<span className="weather-desc">{weather.pres} мм ртутного столба</span>
+				<span className="weather-desc">{Math.floor(weather.pres)} мм ртутного столба</span>
 			</div>
 			<div className="weather-prec">
 				<img src="/images/svg/prec.svg" alt="prec" />
 				<span className="weather-type">Влажность</span>
-				<span className="weather-desc">{weather.humidity}%</span>
+				<span className="weather-desc">{Math.floor(weather.humidity)}%</span>
 			</div>
 			<div className="weather-wind">
 				<img src="/images/svg/wind.svg" alt="wind" />
