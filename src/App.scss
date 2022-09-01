@@ -147,7 +147,7 @@ main {
 		padding: 20px;
 		box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
 		border-radius: 0px 0px 20px 20px;
-
+		padding-bottom: 30px;
 		.card {
 			* {
 				margin: 0;
@@ -220,6 +220,29 @@ main {
 		margin-bottom: 7px;
 	}
 }
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 10px 7px 10px grey;
+	background: #f1f1f1;
+	border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	box-shadow: inset 10px 7px 10px #236ed6;
+	background: #4793ff;
+	border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #0d65e0;
+}
 
 .dark {
 	background: #0d1117;
@@ -269,5 +292,17 @@ main {
 				}
 			}
 		}
+	}
+	::-webkit-scrollbar-track {
+		box-shadow: inset 10px 7px 10px #615959;
+	}
+	::-webkit-scrollbar-thumb {
+		box-shadow: inset 10px 7px 10px grey;
+		background: #252525;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #000000;
 	}
 }
