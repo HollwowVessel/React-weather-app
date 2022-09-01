@@ -7,13 +7,24 @@ import { Nav } from './components/Nav';
 export const Forecast = () => {
 	const weekWeather = useSelector((state) => state.weather.decadeWeather);
 	const [cards, setCards] = useState(weekWeather.length ? weekWeather.slice(0, 7) : []);
+	const [active, setActive] = useState(0);
+	function handleClick(id) {
+		setActive(id);
+		if (id === 0) {
+			setCards(weekWeather.length ? weekWeather.slice(0, 7) : []);
+		}
+		if (id === 1) {
+			setCards(weekWeather.length ? weekWeather.slice(0, 10) : []);
+		}
+	}
+
 	useMemo(() => setCards(weekWeather.length ? weekWeather.slice(0, 7) : []), [weekWeather]);
 	return (
 		<section className="forecast">
-			<Nav />
+			<Nav click={handleClick} active={active} />
 			<div className="forecast-cards">
 				{cards.map((obj) => (
-					<WeatherCard {...obj} />
+					<WeatherCard key={obj.datetime} {...obj} />
 				))}
 			</div>
 		</section>
