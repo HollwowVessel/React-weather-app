@@ -53,8 +53,8 @@ const weatherSlice = createSlice({
 	reducers: {},
 	extraReducers: {
 		[getDailyWeather.fulfilled]: (state, action) => {
+			if (!action.payload) return;
 			let hours = new Date().getHours();
-			console.log(action.payload);
 			let info = action.payload[0].hours[hours - 1];
 			state.dailyWeather = {
 				temp: (info.temp - 32) * (5 / 9),

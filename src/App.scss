@@ -141,6 +141,8 @@ main {
 	margin-top: 50px;
 	.forecast-cards {
 		display: flex;
+		overflow: auto;
+		max-width: 1220px;
 		gap: 20px;
 		padding: 20px;
 		box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
