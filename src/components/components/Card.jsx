@@ -2,20 +2,34 @@ import React from 'react';
 
 export const WeatherCard = ({ datetime, icon, tempmax, tempmin, conditions }) => {
 	const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+
 	const date = new Date(datetime);
-	let today = new Date().setFullYear(
-		new Date().getFullYear(),
-		new Date().getMonth(),
-		new Date().getDate(),
+	let today = new Date(
+		new Date().setFullYear(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()),
 	);
-	today = new Date(today);
+
+	today = today;
+	let tomorrow = new Date(
+		new Date().setFullYear(
+			new Date().getFullYear(),
+			new Date().getMonth(),
+			new Date().getDate() + 1,
+		),
+	);
 	let name = '';
+
 	if (
 		today.getMonth() === date.getMonth() &&
 		date.getDate() === today.getDate() &&
 		date.getFullYear() === today.getFullYear()
 	) {
 		name = 'Сегодня';
+	} else if (
+		tomorrow.getMonth() === date.getMonth() &&
+		date.getDate() === tomorrow.getDate() &&
+		date.getFullYear() === tomorrow.getFullYear()
+	) {
+		name = 'Завтра';
 	} else {
 		name = week[date.getDay()];
 	}
@@ -24,8 +38,8 @@ export const WeatherCard = ({ datetime, icon, tempmax, tempmin, conditions }) =>
 			<h3 className="card__title">{name}</h3>
 			{<p className="card__day">{datetime}</p>}
 			<img src={`/images/svg/${icon}.svg`} alt={icon} />
-			<p className="card__daytemp">{((tempmax - 32) * (5 / 9)).toFixed(1)}°</p>
-			<p className="card__nigthtemp">{((tempmin - 32) * (5 / 9)).toFixed(1)}°</p>
+			<p className="card__daytemp">+{Math.floor((tempmax - 32) * (5 / 9))}°</p>
+			<p className="card__nigthtemp">+{Math.floor((tempmin - 32) * (5 / 9))}°</p>
 			<p className="card__type">{conditions}</p>
 		</div>
 	);

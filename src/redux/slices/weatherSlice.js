@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const apiKey = 'A4ULLKBTWLMSHXMP4F9SBAD4A';
+const googleApiKey = 'AIzaSyBSJnDcezlNZKJGFvkvzpGnsIXP-L1P-Nk';
 
 async function getCoords(city) {
 	const getCoords = await fetch(
