@@ -13,7 +13,6 @@ async function getCoords(city) {
 
 export const getDailyWeather = createAsyncThunk('dailyWeather', async (info) => {
 	const city = info.city;
-	console.log(info);
 	if (!info.city.length) {
 		if (!info.lat || !info.lon) {
 			return;

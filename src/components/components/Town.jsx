@@ -9,8 +9,12 @@ export const Town = () => {
 		if (e.key != 'Enter') {
 			return;
 		}
-		console.log('Start');
-		dispatch(getDailyWeather({ city: text, lat: '', lon: '' }));
+		if (!text) {
+			return alert('Введите город');
+		}
+		let city = text.slice(0, 1).toUpperCase() + text.slice(1, text.length).toLowerCase();
+		dispatch(getDailyWeather({ city, lat: '', lon: '' }));
+		setText('');
 	}
 	return (
 		<input
