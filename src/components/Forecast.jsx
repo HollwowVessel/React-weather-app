@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { WeatherCard } from './components/Card';
 import { Nav } from './components/Nav';
 
-const quantityOfDays = [7, 10];
+const quantityOfDays = [7, 10, 15];
 
 export const Forecast = () => {
 	const weekWeather = useSelector((state) => state.weather.decadeWeather);

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 
 export const Nav = (prop) => {
-	const mock = ['неделю', '10 дней'];
+	const mock = ['неделю', '10 дней', '15 дней'];
 
 	return (
 		<nav className="nav-forecast">
