@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGeolocated } from 'react-geolocated';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDailyWeather } from '../redux/slices/weatherSlice';
+import { getDailyWeather } from '../redux/slices/weatherSlice'; // Time to implement path aliases https://habr.com/ru/post/557076/
 
 const interval = 10000;
 
@@ -18,7 +18,7 @@ export const Info = () => {
   function changeTime() {
     const date = new Date();
     let [hours, minutes] = [date.getHours(), date.getMinutes()];
-    console.log();
+    console.log(); // No console.log in the repository
     if (hours < 10) hours = `0${hours}`;
     if (minutes < 10) minutes = `0${minutes}`;
     setTime(`${hours}:${minutes}`);

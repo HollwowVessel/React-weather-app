@@ -14,11 +14,14 @@ const cardDirections = [
 
 export const Weather = () => {
   const weather = useSelector((state) => state.weather.dailyWeather);
+  // 1. Prefer destructuring
+  // 2. It's better to move the selector to the redux folder
 
   let windDirection = weather.windDir;
 
+  // O.o switch ???
   if (windDirection === 0) {
-    windDirection = cardDirections[0];
+    windDirection = cardDirections[0]; //
   } else if (windDirection < 90) {
     windDirection = cardDirections[1];
   } else if (windDirection === 90) {

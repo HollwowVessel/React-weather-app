@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGeolocated } from 'react-geolocated';
+import { useGeolocated } from 'react-geolocated'; // No unused imports in repository
 import './App.scss';
 import { Forecast } from './components/Forecast';
 import { Header } from './components/Header';

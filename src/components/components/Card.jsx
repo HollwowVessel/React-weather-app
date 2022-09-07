@@ -26,7 +26,7 @@ export const WeatherCard = ({
     )
   );
 
-  today = today;
+  today = today; // ???
   const tomorrow = new Date(
     new Date().setFullYear(
       new Date().getFullYear(),
