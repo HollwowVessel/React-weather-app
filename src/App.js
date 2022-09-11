@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './App.scss';
+import { Weather } from './components/Weather';
 import { Forecast } from './components/Forecast';
 import { Header } from './components/Header';
 import { Info } from './components/Info';
-import { Weather } from './components/Weather';
 
 function App() {
   return (

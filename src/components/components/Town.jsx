@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 
-import { getDailyWeather } from '../../redux/slices/weatherSlice';
+import { getDailyWeather } from 'redux/slices/weatherSlice';
 
 function reducer(state, action) {
   switch (action.type) {
