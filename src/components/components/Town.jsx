@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 import { getDailyWeather } from '../../redux/slices/weatherSlice';
 
