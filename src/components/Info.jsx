@@ -11,7 +11,7 @@ export const Info = () => {
   const weather = useSelector((state) => state.weather.dailyWeather);
   const decadeWeather = useSelector((state) => state.weather.decadeWeather);
 
-  const { coords } = useGeolocated({});
+  const { coords } = useGeolocated();
   const [time, setTime] = useState(0);
   const temp = decadeWeather.length ? decadeWeather[0] : '';
 
@@ -29,7 +29,7 @@ export const Info = () => {
     changeTime();
     const [lat, lon] = [coords?.latitude, coords?.longitude];
     dispatch(getDailyWeather({ city: '', lat, lon }));
-  }, [coords]);
+  }, [coords, dispatch]);
 
   return (
     <section className="info">

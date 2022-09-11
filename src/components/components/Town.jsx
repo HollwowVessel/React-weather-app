@@ -3,24 +3,24 @@ import { useDispatch } from 'react-redux/es/exports';
 
 import { getDailyWeather } from '../../redux/slices/weatherSlice';
 
+function reducer(state, action) {
+  switch (action.type) {
+    case 'setSuggestions': {
+      return { ...state, suggestions: action.payload };
+    }
+    case 'change': {
+      return { ...state, ...action.payload };
+    }
+    case 'weather': {
+      return { ...state, ...action.payload };
+    }
+    default:
+      return state;
+  }
+}
+
 export const Town = () => {
   const dispatch = useDispatch();
-
-  function reducer(state, action) {
-    switch (action.type) {
-      case 'setSuggestions': {
-        return { ...state, suggestions: action.payload };
-      }
-      case 'change': {
-        return { ...state, ...action.payload };
-      }
-      case 'weather': {
-        return { ...state, ...action.payload };
-      }
-      default:
-        return state;
-    }
-  }
 
   const [state, setState] = useReducer(reducer, { text: '', suggestions: [] });
 
@@ -52,22 +52,21 @@ export const Town = () => {
   useEffect(() => {
     async function fetchData() {
       if (state.text && state.text.length) {
-        const data = await fetch(
+        const fetchRes = await fetch(
           `https://api.locationiq.com/v1/autocomplete?key=pk.164249adb7bf93332d519071082cbfce&q=${state.text}`
         )
           .then((res) => res.json())
           .then((data) => data);
         const res = [];
-        for (let i = 1; i < data.length; i++) {
-          if (data[i].address.name === data[i - 1].address.name) {
-            res.push(data[i]);
+        for (let i = 1; i < fetchRes.length; i++) {
+          if (fetchRes[i].address.name === fetchRes[i - 1].address.name) {
+            res.push(fetchRes[i]);
             i++;
           } else {
-            res.push(data[i]);
+            res.push(fetchRes[i]);
           }
         }
         setState({ type: 'setSuggestions', payload: res.slice(0, 5) });
-      } else {
       }
     }
     fetchData();
@@ -85,8 +84,8 @@ export const Town = () => {
       <div className="suggestion">
         <datalist id="towns">
           {state.suggestions.length > 0
-            ? state.suggestions.map((obj, id) => (
-                <option key={id}>{obj.address.name}</option>
+            ? state.suggestions.map((obj) => (
+                <option key={obj.address.name}>{obj.address.name}</option>
               ))
             : undefined}
         </datalist>

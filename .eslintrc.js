@@ -44,6 +44,7 @@ module.exports = {
         namedComponents: 'function-declaration',
       },
     ],
+
     'no-plusplus': 0,
     'consistent-return': 0,
     'no-restricted-syntax': 0,

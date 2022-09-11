@@ -56,8 +56,6 @@ body {
 main {
   margin-top: 30px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .info {
@@ -68,6 +66,7 @@ main {
   border-radius: 20px;
   padding: 20px;
   min-width: 430px;
+  margin-right: 20px;
   .info-desc {
     &__temp {
       font-weight: 500;
@@ -139,6 +138,7 @@ main {
 
 .forecast {
   margin-top: 50px;
+  width: 100%;
   .forecast-cards {
     display: flex;
     overflow: auto;
@@ -244,8 +244,27 @@ main {
   background: #0d65e0;
 }
 
+.themeButton {
+  outline: none;
+  border: none;
+  background: #fff;
+  &:focus,
+  &:active {
+    border: 1px solid #fff;
+  }
+}
+
 .dark {
   background: #0d1117;
+  .themeButton {
+    outline: none;
+    border: none;
+    background: #0d1117;
+    &:focus,
+    &:active {
+      border: 1px solid #fff;
+    }
+  }
   .header {
     input {
       color: #fff;
@@ -311,26 +330,11 @@ main {
   position: relative;
 }
 .suggestion {
-<<<<<<< HEAD
   position: absolute;
   top: 40px;
   z-index: 1;
+  border-radius: 20px;
   background: #fff;
   box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
   width: 100%;
-  ul {
-    list-style-type: none;
-    li {
-      cursor: pointer;
-    }
-  }
-=======
-	position: absolute;
-	top: 40px;
-	z-index: 1;
-	border-radius: 20px;
-	background: #fff;
-	box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
-	width: 100%;
->>>>>>> dc278255d955628ee8c5aa6eda4f1ea9b04275d0
 }

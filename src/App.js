@@ -14,8 +14,8 @@ function App() {
         <main>
           <Info />
           <Weather />
-          <Forecast />
         </main>
+        <Forecast />
       </div>
     </div>
   );

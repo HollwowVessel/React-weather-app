@@ -20,11 +20,12 @@ export const Theme = () => {
   }
 
   return (
-    <img
-      src="/images/svg/theme.svg"
-      alt="theme"
-      style={{ cursor: 'pointer' }}
-      onClick={changeTheme}
-    />
+    <button onClick={changeTheme} type="button" className="themeButton">
+      <img
+        src="/images/svg/theme.svg"
+        alt="theme"
+        style={{ cursor: 'pointer' }}
+      />
+    </button>
   );
 };

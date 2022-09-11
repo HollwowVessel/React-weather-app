@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -16,16 +16,14 @@ export const Forecast = () => {
     weekWeather.length ? weekWeather.slice(0, quantityOfDays[0]) : []
   );
 
-  function handleClick(id) {
+  const handleClick = (id) => () => {
     setActive(id);
+  };
+  useEffect(() => {
     setCards(
-      weekWeather.length ? weekWeather.slice(0, quantityOfDays[id]) : []
+      weekWeather.length ? weekWeather.slice(0, quantityOfDays[active]) : []
     );
-  }
-
-  useMemo(() => {
-    handleClick(active);
-  }, [weekWeather]);
+  }, [weekWeather, active]);
 
   return (
     <section className="forecast">
