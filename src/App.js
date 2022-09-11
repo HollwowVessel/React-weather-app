@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './App.scss';
 import { Forecast } from './components/Forecast';
 import { Header } from './components/Header';

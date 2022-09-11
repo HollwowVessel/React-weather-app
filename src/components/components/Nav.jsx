@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Nav = (prop) => {
-  const mock = ['неделю', '10 дней'];
+export const Nav = ({ active, click }) => {
+  const mock = ['неделю', '10 дней', '15 дней'];
 
   return (
     <nav className="nav-forecast">
@@ -9,10 +9,8 @@ export const Nav = (prop) => {
         {mock.map((name, id) => (
           <li
             key={name}
-            className={
-              prop.active === id ? 'nav-menu__btn active' : 'nav-menu__btn'
-            }
-            onClick={() => prop.click(id)}
+            className={active === id ? 'nav-menu__btn active' : 'nav-menu__btn'}
+            onClick={() => click(id)}
           >
             На {name}
           </li>

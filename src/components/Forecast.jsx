@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { WeatherCard } from './components/Card';
 import { Nav } from './components/Nav';
 
-const quantityOfDays = [7, 10];
+const quantityOfDays = [7, 10, 15];
 
 export const Forecast = () => {
   const weekWeather = useSelector((state) => state.weather.decadeWeather);
@@ -16,16 +16,16 @@ export const Forecast = () => {
     weekWeather.length ? weekWeather.slice(0, quantityOfDays[0]) : []
   );
 
-  const handleClick = useCallback((id) => {
+  function handleClick(id) {
     setActive(id);
-  }, []);
-  React.useEffect(
-    () =>
-      setCards(
-        weekWeather.length ? weekWeather.slice(0, quantityOfDays[active]) : []
-      ),
-    [weekWeather, active]
-  );
+    setCards(
+      weekWeather.length ? weekWeather.slice(0, quantityOfDays[id]) : []
+    );
+  }
+
+  useMemo(() => {
+    handleClick(active);
+  }, [weekWeather]);
 
   return (
     <section className="forecast">
